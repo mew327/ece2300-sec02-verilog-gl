@@ -70,7 +70,10 @@ module Top();
     t.test_case_begin( "test_case_1_basic" );
 
     //     in0 in1 in2 out
-    check( 0,  0,  0,  0 );
+    check( 0, 0, 0, 0 );
+    check( 0, 1, 1, 1 );
+    check( 0, 1, 0, 0 );
+    check( 1, 1, 1, 1 );
 
     t.test_case_end();
   endtask
@@ -82,10 +85,16 @@ module Top();
   task test_case_2_exhaustive();
     t.test_case_begin( "test_case_2_exhaustive" );
 
-    //''' ACTIVITY '''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    // Add checks for exhaustive testing (check all possible inputs)
-    //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
+   
+  check(0,0,0,0);
+  check(0,0,1,0);
+  check(0,1,0,0);
+  check(0,1,1,1);
+  check(1,0,0,0);
+  check(1,0,1,1);
+  check(1,1,0,1);
+  check(1,1,1,1);
+  
     t.test_case_end();
   endtask
 
@@ -104,9 +113,6 @@ module Top();
     t.test_case_end();
   endtask
 
-  //----------------------------------------------------------------------
-  // main
-  //----------------------------------------------------------------------
 
   initial begin
     t.test_bench_begin();
